@@ -1,20 +1,21 @@
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Stack;
 import java.lang.Math;
 
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-        List<Integer> works = new ArrayList<>();
+        Stack<Integer> works = new Stack<>();
         int maxDay = 0;
         
         for (int i = 0; i < progresses.length; i++) {
             int day = (int)Math.ceil((100.0 - progresses[i]) / speeds[i]);
             
             if (day > maxDay) {
-                works.add(1);
+                works.push(1);
                 maxDay = day;
             } else {
-                works.set(works.size() - 1, works.get(works.size() - 1) + 1);
+                int num = works.peek();
+                works.pop();
+                works.push(num + 1);
             }
         }
         
