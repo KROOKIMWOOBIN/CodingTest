@@ -5,8 +5,8 @@ class Solution {
     }
     
     public int targetNumber(int[] numbers, int depth, int target, int sum) {
-        if (depth == numbers.length) {
-            if (sum == target) {
+        if (numbers.length == depth) {
+            if (target == sum) {
                 return 1;
             }
             return 0;
